@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - E-Commerce Store{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Hero Section -->
+    <div class="row align-items-center min-vh-50 py-5">
+        <div class="col-lg-6">
+            <h1 class="display-4 fw-bold text-primary mb-4">Welcome to E-Commerce Store</h1>
+            <p class="lead mb-4">Discover amazing products at unbeatable prices. Shop with confidence and enjoy a seamless shopping experience.</p>
+            <div class="d-flex gap-3">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}" class="btn btn-primary btn-lg">
+                        <i class="bi bi-person"></i> View Profile
+                    </a>
+                    <a href="{% url 'product_list' %}" class="btn btn-outline-primary btn-lg">
+                        <i class="bi bi-cart"></i> Start Shopping
+                    </a>
+                {% else %}
+                    <a href="{% url 'signup' %}" class="btn btn-primary btn-lg rounded-pill px-4">
+                        <i class="bi bi-person-plus"></i> Get Started
+                    </a>
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg rounded-pill px-4">
+                        <i class="bi bi-box-arrow-in-right"></i> Sign In
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="text-center">
+                <i class="bi bi-shop-window display-1 text-primary"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row py-5">
+        <div class="col-12 text-center mb-5">
+            <h2 class="display-5 fw-bold">Why Choose Us?</h2>
+            <p class="lead text-muted">Experience the best in online shopping</p>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-truck display-4 text-primary mb-3"></i>
+                    <h4 class="card-title">Fast Delivery</h4>
+                    <p class="card-text text-muted">Get your orders delivered quickly with our express shipping options.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-shield-check display-4 text-primary mb-3"></i>
+                    <h4 class="card-title">Secure Shopping</h4>
+                    <p class="card-text text-muted">Shop with confidence knowing your data is protected with advanced security.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-headset display-4 text-primary mb-3"></i>
+                    <h4 class="card-title">24/7 Support</h4>
+                    <p class="card-text text-muted">Our customer service team is here to help you anytime, anywhere.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    {% if not user.is_authenticated %}
+    <div class="row py-5">
+        <div class="col-12">
+            <div class="bg-primary bg-gradient text-white rounded-3 p-5 text-center">
+                <h2 class="display-5 fw-bold mb-4">Join Our Community Today!</h2>
+                <p class="lead mb-4">Create an account and get exclusive access to deals and new arrivals.</p>
+                <a href="{% url 'signup' %}" class="btn btn-light btn-lg rounded-pill px-5">
+                    <i class="bi bi-person-plus"></i> Sign Up Now
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %} 
